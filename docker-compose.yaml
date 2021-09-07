@@ -1,0 +1,25 @@
+version: "2.1"
+
+services:
+
+  duckdns:
+    image: linuxserver/duckdns
+    container_name: duckdns
+    environment:
+      - PUID=1000 #optional
+      - PGID=984 #optional
+      - TZ=${TIMEZONE}
+      - SUBDOMAINS=${SUBDOMAINS}
+      - TOKEN=${DUCKDNS_TOKEN}
+      - LOG_FILE=false #optional
+    volumes:
+      - $HOME/Volumes/duckdns:/config #optional
+    restart: always
+    networks:
+      server-network:
+        ipv4_address: 172.40.0.2
+
+networks:
+    server-network:
+        external: true
+        name: server-containers
