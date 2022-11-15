@@ -13,14 +13,10 @@ services:
       - TOKEN=${DUCKDNS_TOKEN}
       - LOG_FILE=false #optional
     volumes:
-      - $HOME/Volumes/duckdns:/config #optional
+      - ${CLIENT_PATH}:/config #optional
     restart: always
     networks:
-      server-network:
-        ipv4_address: 172.40.0.2
+      net:
 
 networks:
-    server-network:
-        external: true
-        name: server-containers
-        
+  net:
