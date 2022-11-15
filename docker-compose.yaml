@@ -13,10 +13,12 @@ services:
       - TOKEN=${DUCKDNS_TOKEN}
       - LOG_FILE=false #optional
     volumes:
-      - ${CLIENT_PATH}:/config #optional
+      - data:/config #optional
     restart: always
     networks:
       net:
 
 networks:
   net:
+volumes:
+  data:
